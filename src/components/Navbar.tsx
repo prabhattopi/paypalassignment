@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import paypalImage from "../assets/paypal-seeklogo.com.svg"
 import { AiFillBell } from "react-icons/ai"
@@ -64,7 +64,7 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          <div className="flex items-center justify-between gap-4 hidden md:flex sm:flex">
+          <div className="items-center justify-between gap-4 hidden md:flex sm:flex">
             <IconContext.Provider value={{ className: "w-5 h-5" }}>
               <AiFillBell style={{ color: "white" }} />
             </IconContext.Provider>
