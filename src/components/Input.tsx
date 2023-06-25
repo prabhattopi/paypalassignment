@@ -3,7 +3,8 @@ import { FiDownload } from "react-icons/fi"
 import { CiSearch } from "react-icons/ci"
 import { IconContext } from "react-icons"
 import Filter from "./Filter"
-
+import Card from "./Card.tsx"
+import {CardData} from "../data/CardData.ts"
 const Input = () => {
   const [searchQuery, setSearchQuery] = useState("")
 
@@ -48,11 +49,28 @@ const Input = () => {
           </IconContext.Provider>
         </button>
       </form>
-      <h4 className="text-2xl my-4 font-bold">Filter By</h4>
-      <div className="flex gap-4">
-        <Filter title="Last 90 Days"/>
-        <Filter title="Last 90 Days"/>
-        <Filter title="Last 90 Days"/>
+      <div className="my-4 flex-column gap-4 justify-start">
+        <div className="text-lg font-bold mb-4">
+          <h4 className={`text-lg ${window.innerWidth < 768 ? "ml-4" : ""}`}>
+            Filter by
+          </h4>
+        </div>
+
+        <div className="flex gap-4">
+          <Filter title="Last 90 Days" />
+          <Filter title="Type" />
+          <Filter title="Status" />
+        </div>
+      </div>
+
+      <h4 className="text-lg my-4 font-bold">Completed</h4>
+      <p className="text-md text-gray-500 my-4">This week</p>
+      <div className="flex-column">
+        {CardData?.map((e) => (
+          <div key={e.id} className="mb-4">
+            <Card {...e} />
+          </div>
+        ))}
       </div>
     </div>
   )
